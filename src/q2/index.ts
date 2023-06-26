@@ -1,4 +1,5 @@
-export function countDuplicates(str: string): number {
+export function evenNumberSum(n: number): number {
+
   // Implementation goes here
-  return 0;
+  return n;
 }

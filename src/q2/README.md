@@ -1,37 +1,34 @@
-## Challenge: Counting Duplicates
+Challenge: Even Number Sum
 
-### Difficulty: Medium
+Difficulty: Easy
 
-You are given a string and your task is to implement a function that counts the number of duplicate characters in the string. A duplicate character is a character that appears more than once in the string.
+You are given a positive integer `n`. Your task is to implement a function that finds the sum of all even numbers less than or equal to `n`.
 
-Your function should return the count of duplicate characters in the string.
+Your function should return the sum of even numbers.
 
-**Function Signature:**
+Function Signature:
 ```typescript
-function countDuplicates(str: string): number {
+function evenNumberSum(n: number): number {
   // Implementation goes here
   return 0;
 }
 ```
 
-**Input:**
-The `str` parameter is a string of alphanumeric characters. The length of the string is between 1 and 10^5 (1 <= str.length <= 10^5).
+Input:
+The `n` parameter is a positive integer greater than or equal to 1.
 
-**Output:**
-The function should return the count of duplicate characters in the string.
+Output:
+The function should return the sum of even numbers less than or equal to `n`.
 
-**Examples:**
+Examples:
 ```typescript
-countDuplicates("hello"); // Output: 2 (The letter "l" appears twice in the string)
-countDuplicates("aabbcde"); // Output: 2 (The letters "a" and "b" appear twice in the string)
-countDuplicates("abcde"); // Output: 0 (There are no duplicate characters in the string)
-countDuplicates("Mississippi"); // Output: 3 (The letters "s" and "i" appear three times, and the letter "p" appears twice in the string)
+evenNumberSum(10); // Output: 30 (2 + 4 + 6 + 8 + 10 = 30)
+evenNumberSum(15); // Output: 56 (2 + 4 + 6 + 8 + 10 + 12 + 14 = 56)
+evenNumberSum(20); // Output: 110 (2 + 4 + 6 + 8 + 10 + 12 + 14 + 16 + 18 + 20 = 110)
 ```
 
-In the first example, the letter "l" appears twice in the string, so the count of duplicate characters is 2.
+In the first example, the even numbers less than or equal to 10 are 2, 4, 6, 8, and 10. Their sum is 30.
 
-In the second example, the letters "a" and "b" appear twice in the string, so the count of duplicate characters is 2.
+In the second example, the even numbers less than or equal to 15 are 2, 4, 6, 8, 10, 12, and 14. Their sum is 56.
 
-In the third example, there are no duplicate characters in the string, so the count is 0.
-
-In the fourth example, the letters "s" and "i" appear three times, and the letter "p" appears twice in the string, so the count of duplicate characters is 3.
+In the third example, the even numbers less than or equal to 20 are 2, 4, 6, 8, 10, 12, 14, 16, 18, and 20. Their sum is 110.

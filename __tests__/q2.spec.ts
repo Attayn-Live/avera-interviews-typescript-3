@@ -1,33 +1,52 @@
-import {countDuplicates} from '../src/q2'; // Assuming the classes are defined in separate files
+import {evenNumberSum} from '../src/q2'; // Assuming the classes are defined in separate files
 
 
-describe('Counting Duplicates', () => {
-  it('should return the correct count of duplicate characters', () => {
-    expect(countDuplicates('hello')).toBe(2); // The letter "l" appears twice in the string
-    expect(countDuplicates('aabbcde')).toBe(2); // The letters "a" and "b" appear twice in the string
-    expect(countDuplicates('abcde')).toBe(0); // There are no duplicate characters in the string
-    expect(countDuplicates('Mississippi')).toBe(3); // The letters "s" and "i" appear three times, and the letter "p" appears twice in the string
-    expect(countDuplicates('aAAbBcC')).toBe(6); // All characters appear as duplicates in the string
-    expect(countDuplicates('1234567890')).toBe(0); // There are no duplicate characters in the string
+describe('Even Number Sum', () => {
+  test('Sum of even numbers less than or equal to 10 should be 30', () => {
+    expect(evenNumberSum(10)).toBe(30);
   });
 
-  it('should handle empty strings', () => {
-    expect(countDuplicates('')).toBe(0); // Empty string has no duplicate characters
+  test('Sum of even numbers less than or equal to 15 should be 56', () => {
+    expect(evenNumberSum(15)).toBe(56);
   });
 
-  it('should handle strings with only one character', () => {
-    expect(countDuplicates('a')).toBe(0); // Single character string has no duplicate characters
-    expect(countDuplicates('Z')).toBe(0); // Single character string has no duplicate characters
-    expect(countDuplicates('9')).toBe(0); // Single character string has no duplicate characters
+  test('Sum of even numbers less than or equal to 20 should be 110', () => {
+    expect(evenNumberSum(20)).toBe(110);
   });
 
-  it('should be case-sensitive', () => {
-    expect(countDuplicates('Hello')).toBe(1); // The uppercase "H" appears twice, but case is considered
-    expect(countDuplicates('AAAbbB')).toBe(3); // The uppercase "A" appears three times, and the uppercase "B" appears twice
+  test('Sum of even numbers less than or equal to 1 should be 0', () => {
+    expect(evenNumberSum(1)).toBe(0);
   });
 
-  it('should count duplicate characters with special characters', () => {
-    expect(countDuplicates('!@#$%^&*()')).toBe(0); // There are no duplicate characters in the string
-    expect(countDuplicates('@@##$$')).toBe(3); // The characters "@" and "#" appear twice, and the character "$" appears three times
+  test('Sum of even numbers less than or equal to 100 should be 2550', () => {
+    expect(evenNumberSum(100)).toBe(2550);
+  });
+
+  test('Sum of even numbers less than or equal to 1000 should be 250500', () => {
+    expect(evenNumberSum(1000)).toBe(250500);
+  });
+
+  test('Sum of even numbers less than or equal to 1 should be 0', () => {
+    expect(evenNumberSum(1)).toBe(0);
+  });
+
+  test('Sum of even numbers less than or equal to 2 should be 2', () => {
+    expect(evenNumberSum(2)).toBe(2);
+  });
+
+  test('Sum of even numbers less than or equal to 3 should be 2', () => {
+    expect(evenNumberSum(3)).toBe(2);
+  });
+
+  test('Sum of even numbers less than or equal to 100 should be 2550', () => {
+    expect(evenNumberSum(100)).toBe(2550);
+  });
+
+  test('Sum of even numbers less than or equal to 1000 should be 250500', () => {
+    expect(evenNumberSum(1000)).toBe(250500);
+  });
+
+  test('Sum of even numbers less than or equal to 100000 should be 2500050000', () => {
+    expect(evenNumberSum(100000)).toBe(2500050000);
   });
 });
