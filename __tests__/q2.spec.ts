@@ -1,90 +1,33 @@
-import { Book, BookLibrary } from '../src/q2'; // Assuming the classes are defined in separate files
+import {countDuplicates} from '../src/q2'; // Assuming the classes are defined in separate files
 
-describe('BookLibrary', () => {
-  let library: BookLibrary;
-  let book1: Book;
-  let book2: Book;
-  let book3: Book;
 
-  beforeEach(() => {
-    library = new BookLibrary();
-    book1 = new Book("The Catcher in the Rye", "J.D. Salinger", "Fiction", 1951);
-    book2 = new Book("To Kill a Mockingbird", "Harper Lee", "Fiction", 1960);
-    book3 = new Book("The Great Gatsby", "F. Scott Fitzgerald", "Fiction", 1925);
+describe('Counting Duplicates', () => {
+  it('should return the correct count of duplicate characters', () => {
+    expect(countDuplicates('hello')).toBe(2); // The letter "l" appears twice in the string
+    expect(countDuplicates('aabbcde')).toBe(2); // The letters "a" and "b" appear twice in the string
+    expect(countDuplicates('abcde')).toBe(0); // There are no duplicate characters in the string
+    expect(countDuplicates('Mississippi')).toBe(3); // The letters "s" and "i" appear three times, and the letter "p" appears twice in the string
+    expect(countDuplicates('aAAbBcC')).toBe(6); // All characters appear as duplicates in the string
+    expect(countDuplicates('1234567890')).toBe(0); // There are no duplicate characters in the string
   });
 
-  it('should add a book to the library', () => {
-    library.addBook(book1);
-    expect(library.getAllBooks()).toContain(book1);
+  it('should handle empty strings', () => {
+    expect(countDuplicates('')).toBe(0); // Empty string has no duplicate characters
   });
 
-  it('should remove a book from the library', () => {
-    library.addBook(book1);
-    library.addBook(book2);
-
-    expect(library.removeBook("To Kill a Mockingbird")).toBe(true);
-    expect(library.getAllBooks()).not.toContain(book2);
+  it('should handle strings with only one character', () => {
+    expect(countDuplicates('a')).toBe(0); // Single character string has no duplicate characters
+    expect(countDuplicates('Z')).toBe(0); // Single character string has no duplicate characters
+    expect(countDuplicates('9')).toBe(0); // Single character string has no duplicate characters
   });
 
-  it('should return false when removing a non-existent book from the library', () => {
-    library.addBook(book1);
-    library.addBook(book2);
-
-    expect(library.removeBook("The Great Gatsby")).toBe(false);
-    expect(library.getAllBooks()).toContain(book1);
-    expect(library.getAllBooks()).toContain(book2);
+  it('should be case-sensitive', () => {
+    expect(countDuplicates('Hello')).toBe(1); // The uppercase "H" appears twice, but case is considered
+    expect(countDuplicates('AAAbbB')).toBe(3); // The uppercase "A" appears three times, and the uppercase "B" appears twice
   });
 
-  it('should search for books in the library by title, author, and genre', () => {
-    library.addBook(book1);
-    library.addBook(book2);
-    library.addBook(book3);
-
-    const searchResults = library.searchBooks("great");
-
-    expect(searchResults.length).toBe(1);
-    expect(searchResults[0].title).toBe("The Great Gatsby");
-  });
-
-  it('should return an empty array when no books match the search term', () => {
-    library.addBook(book1);
-    library.addBook(book2);
-    library.addBook(book3);
-
-    const searchResults = library.searchBooks("nonexistent");
-
-    expect(searchResults.length).toBe(0);
-  });
-
-  it('should return all books in the library', () => {
-    library.addBook(book1);
-    library.addBook(book2);
-    library.addBook(book3);
-
-    const allBooks = library.getAllBooks();
-
-    expect(allBooks.length).toBe(3);
-    expect(allBooks).toContain(book1);
-    expect(allBooks).toContain(book2);
-    expect(allBooks).toContain(book3);
-  });
-
-  it('should not add a duplicate book to the library', () => {
-    library.addBook(book1);
-    library.addBook(book2);
-
-    // Attempt to add a book with the same title as book1
-    library.addBook(new Book("The Catcher in the Rye", "J.D. Salinger", "Fiction", 1951));
-
-    expect(library.getAllBooks().length).toBe(2);
-  });
-
-  it('should handle removing a book with case-insensitive title match', () => {
-    library.addBook(book1);
-    library.addBook(book2);
-    library.addBook(book3);
-
-    expect(library.removeBook("the catcher in the rye")).toBe(true);
-    expect(library.getAllBooks()).not.toContain(book1);
+  it('should count duplicate characters with special characters', () => {
+    expect(countDuplicates('!@#$%^&*()')).toBe(0); // There are no duplicate characters in the string
+    expect(countDuplicates('@@##$$')).toBe(3); // The characters "@" and "#" appear twice, and the character "$" appears three times
   });
 });

@@ -1,50 +1,37 @@
-### Challenge Title: Book Library
+## Challenge: Counting Duplicates
 
-#### Difficulty: Beginner Level
+### Difficulty: Medium
 
-#### Description:
+You are given a string and your task is to implement a function that counts the number of duplicate characters in the string. A duplicate character is a character that appears more than once in the string.
 
-You are tasked with building a Book Library system that allows users to add, remove, and search for books. The system
-should be implemented as a class called BookLibrary, which should have the following functionalities:
+Your function should return the count of duplicate characters in the string.
 
-* `addBook(book: Book): void`: This method should allow users to add a `book` to the library. The `book` parameter should be
-  an object of type `Book`, which has the following properties: `title (string)`, `author (string)`, `genre (string)`, and
-  `year (number)`. The method should add the book to the library and store it for future reference.
-
-* `removeBook(bookTitle: string): boolean`: This method should allow users to remove a book from the library based on
-  its title. The method should return `true` if the book was successfully removed, and `false` otherwise.
-
-* `searchBooks(searchTerm: string): Book[]`: This method should allow users to search for books in the library based on
-  a search term. The method should return an array of `Book` objects that match the search term. The search should be
-  case-insensitive and should match against the `title`, `author`, and `genre` properties of the books.
-
-* `getAllBooks(): Book[]`: This method should return an array of all the books in the library.
-
-
-Example:
+**Function Signature:**
 ```typescript
-// Usage example
-const library = new BookLibrary();
-const book1 = new Book("The Catcher in the Rye", "J.D. Salinger", "Fiction", 1951);
-const book2 = new Book("To Kill a Mockingbird", "Harper Lee", "Fiction", 1960);
-const book3 = new Book("The Great Gatsby", "F. Scott Fitzgerald", "Fiction", 1925);
-
-library.addBook(book1);
-library.addBook(book2);
-library.addBook(book3);
-
-console.log(library.getAllBooks()); // Output: [book1, book2, book3]
-
-console.log(library.searchBooks("catcher")); // Output: [book1]
-console.log(library.searchBooks("Fiction")); // Output: [book1, book2, book3]
-
-console.log(library.removeBook("To Kill a Mockingbird")); // Output: true
-
-console.log(library.getAllBooks()); // Output: [book1, book3]
+function countDuplicates(str: string): number {
+  // Implementation goes here
+  return 0;
+}
 ```
 
-#### NOTES: 
+**Input:**
+The `str` parameter is a string of alphanumeric characters. The length of the string is between 1 and 10^5 (1 <= str.length <= 10^5).
 
-Ensure that the implementation;
-* should not allow adding a duplicate book to the library;
-* should handle removing a book with case-insensitive title match
+**Output:**
+The function should return the count of duplicate characters in the string.
+
+**Examples:**
+```typescript
+countDuplicates("hello"); // Output: 2 (The letter "l" appears twice in the string)
+countDuplicates("aabbcde"); // Output: 2 (The letters "a" and "b" appear twice in the string)
+countDuplicates("abcde"); // Output: 0 (There are no duplicate characters in the string)
+countDuplicates("Mississippi"); // Output: 3 (The letters "s" and "i" appear three times, and the letter "p" appears twice in the string)
+```
+
+In the first example, the letter "l" appears twice in the string, so the count of duplicate characters is 2.
+
+In the second example, the letters "a" and "b" appear twice in the string, so the count of duplicate characters is 2.
+
+In the third example, there are no duplicate characters in the string, so the count is 0.
+
+In the fourth example, the letters "s" and "i" appear three times, and the letter "p" appears twice in the string, so the count of duplicate characters is 3.

@@ -1,35 +1,44 @@
-## Challenge Title: "Word Reversal"
+## Challenge Title: "String Compression"
 
 ### Problem Statement:
 
-You are given a string containing multiple words separated by spaces. Your task is to implement a function that reverses
-the order of each word in the string while keeping the words themselves unchanged. The reversed words should be
-separated by spaces, and the resulting string should have no leading or trailing spaces.
+You are given a string consisting of lowercase alphabets. Your task is to implement a function that compresses the
+string by replacing consecutive repeated characters with the character itself followed by the count of consecutive
+occurrences.
+
+The compressed string should be formed by taking each unique character and its consecutive occurrences from the input
+string. If the count of consecutive occurrences is greater than 1, it should be included in the compressed string;
+otherwise, only the character itself should be included.
 
 ### Function Signature:
 
 ```typescript
-function reverseWords(input: string): string {
+function compressString(input: string): string {
   // Implementation goes here
   return '';
 }
-
 ```
 
 ### Input:
-The `input` parameter is a string containing words separated by spaces. It is guaranteed to have at least one word and at
-most 10^5 characters. The input string may have leading or trailing spaces, but the words themselves will not contain
-any spaces. Multiple spaces between words should be treated as a single space.
+
+The `input` parameter is a string consisting of lowercase alphabets. It is guaranteed to have at least one character and
+at most 10^5 characters.
 
 ### Output:
-The function should return a string with the words in reversed order, separated by spaces, with no leading or trailing
-spaces.
+
+The function should return a string that represents the compressed version of the input string.
 
 ### Examples:
 
 ```typescript
-reverseWords("Hello World"); // Output: "olleH dlroW"
-reverseWords("  Welcome   to TypeScript   "); // Output: "emocleW ot tpircSepyT"
-reverseWords("  TypeScript is Awesome   "); // Output: "tpircSepyT si emosewA"
-
+compressString("aaabbbccc"); // Output: "a3b3c3"
+compressString("aabbbcc"); // Output: "a2b3c2"
+compressString("abc"); // Output: "abc"
+compressString("abc"); // Output: "abc"
 ```
+
+### Note:
+
+In the first example, the input string "aaabbbccc" has consecutive repeated characters 'a', 'b', and 'c' with counts 3,
+3, and 3 respectively. The compressed string is formed by taking each unique character and its count of consecutive
+occurrences, resulting in "a3b3c3".

@@ -1,4 +1,3 @@
-export function findLongestSubarray(arr: number[], target: number): [number, number] | null {
+export function fn(): void {
   // Implementation goes here
-  return null;
 }

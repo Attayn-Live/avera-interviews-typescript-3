@@ -1,4 +1,4 @@
-export function reverseWords(input: string): string {
+export function compressString(input: string): string {
   // Implementation goes here
   return '';
 }
