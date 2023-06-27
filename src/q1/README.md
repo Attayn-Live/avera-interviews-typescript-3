@@ -34,11 +34,14 @@ The function should return a string that represents the compressed version of th
 compressString("aaabbbccc"); // Output: "a3b3c3"
 compressString("aabbbcc"); // Output: "a2b3c2"
 compressString("abc"); // Output: "abc"
-compressString("abc"); // Output: "abc"
+compressString("a"); // Output: "a"
+compressString('ccccccccc') // Output: "c9"
+compressString('cdcddcddc') // Output: "cdcd2cd2c"
+compressString('xyyxxy') // Output: "xy2x2y"
 ```
 
 ### Note:
 
 In the first example, the input string "aaabbbccc" has consecutive repeated characters 'a', 'b', and 'c' with counts 3,
 3, and 3 respectively. The compressed string is formed by taking each unique character and its count of consecutive
-occurrences, resulting in "a3b3c3".
+occurrences, resulting in "a3b3c3"... And so on
