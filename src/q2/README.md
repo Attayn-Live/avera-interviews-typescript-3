@@ -1,6 +1,6 @@
-Challenge: Even Number Sum
+## Challenge: Even Number Sum
 
-Difficulty: Easy
+### Difficulty: Easy
 
 You are given a positive integer `n`. Your task is to implement a function that finds the sum of all even numbers less than or equal to `n`.
 
