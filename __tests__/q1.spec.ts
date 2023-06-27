@@ -4,14 +4,14 @@ describe('String Compression', () => {
   it('should compress a string with consecutive repeated characters', () => {
     expect(compressString('aaabbbccc')).toBe('a3b3c3');
     expect(compressString('aabbbcc')).toBe('a2b3c2');
-    expect(compressString('aaaabbbccd')).toBe('a4b3c2d1');
+    expect(compressString('aaaabbbccd')).toBe('a4b3c2d');
     expect(compressString('zzzxxxzzz')).toBe('z3x3z3');
   });
 
   it('should return the original string if no consecutive repeated characters exist', () => {
     expect(compressString('abc')).toBe('abc');
     expect(compressString('xyz')).toBe('xyz');
-    expect(compressString('aabbcc')).toBe('aabbcc');
+    expect(compressString('aabbcc')).toBe('a2b2c2');
     expect(compressString('abcd')).toBe('abcd');
   });
 
