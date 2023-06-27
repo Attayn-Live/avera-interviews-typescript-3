@@ -22,25 +22,26 @@ Filter out users that do not contain all the data fields and return only users w
 ### Examples:
 
 ```typescript
-fetchAndFilterData([
+//this is the format of the returned data from the endpoint
+const data = [
   { id: 1, name: "John Doe", email: "johndoe@test.com" },
   { id: 2, email: "sussan@test.com" },
   { name: "Michael", email: "michael@test.com" },
-]);
+];
 // Output: [{ id: 1, name: "John Doe", email: "johndoe@test.com" }]
-fetchAndFilterData([]);
+const data = [];
 // Output: []
-fetchAndFilterData([
+const data = [
   { id: 1, email: "johndoe@test.com" },
   { id: undefined, email: "sussan@test.com" },
   { name: "John Doe", email: "michael@test.com" },
-]);
+];
 //Output: []
-fetchAndFilterData([
+const data = [
   { id: 1, name: "John Doe", email: "johndoe@test.com" },
   { id: 2, email: "sussan@test.com" },
   { id: 3, name: "", email: "michael@test.com" },
   { id: 4, name: "Juliet", email: "juliet@test.com" },
-]);
+];
 // Output: [{ id: 1, name: "John Doe", email: "johndoe@test.com" },{ id: 4, name: "Juliet", email: "juliet@test.com" },]
 ```
