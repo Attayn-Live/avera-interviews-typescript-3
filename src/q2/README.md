@@ -7,6 +7,7 @@ You are given a positive integer `n`. Your task is to implement a function that 
 Your function should return the sum of even numbers.
 
 Function Signature:
+
 ```typescript
 function evenNumberSum(n: number): number {
   // Implementation goes here
@@ -21,6 +22,7 @@ Output:
 The function should return the sum of even numbers less than or equal to `n`.
 
 Examples:
+
 ```typescript
 evenNumberSum(10); // Output: 30 (2 + 4 + 6 + 8 + 10 = 30)
 evenNumberSum(15); // Output: 56 (2 + 4 + 6 + 8 + 10 + 12 + 14 = 56)

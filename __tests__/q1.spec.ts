@@ -1,55 +1,53 @@
-import {compressString} from '../src/q1';
+import { Data, fetchAndFilterData } from "../src/q1"; // Import the implementation function from the actual implementation file
+import axios from "axios";
 
-describe('String Compression', () => {
-  it('should compress a string with consecutive repeated characters', () => {
-    expect(compressString('aaabbbccc')).toBe('a3b3c3');
-    expect(compressString('aabbbcc')).toBe('a2b3c2');
-    expect(compressString('aaaabbbccd')).toBe('a4b3c2d');
-    expect(compressString('zzzxxxzzz')).toBe('z3x3z3');
+jest.mock("axios");
+
+describe("Fetch data from API", () => {
+  const mockUsers = [
+    { id: 1, name: "John Doe", email: "johndoe@test.com" },
+    { id: "", name: "Sussan", email: "susan@test.com" },
+    { name: "Juliet", email: "juliet@test.com" },
+    { id: 4, name: "Michael", email: "micahel@test.com" },
+    { id: 5, name: "Paul", email: "paul@test.com" },
+    {},
+    { id: 7, name: "", email: "billy@test.com" },
+    { id: 8, name: "Bill", email: "" },
+  ];
+  (axios.get as jest.Mock).mockResolvedValue({ data: mockUsers });
+  test("should filter out objects with undefined id", async () => {
+    const filteredUsers = await fetchAndFilterData("");
+
+    expect(filteredUsers.every((user) => user.id !== undefined)).toBe(true);
   });
 
-  it('should return the original string if no consecutive repeated characters exist', () => {
-    expect(compressString('abc')).toBe('abc');
-    expect(compressString('xyz')).toBe('xyz');
-    expect(compressString('aabbcc')).toBe('a2b2c2');
-    expect(compressString('abcd')).toBe('abcd');
+  test("should filter out objects with undefined or empty name", async () => {
+    const filteredUsers = await fetchAndFilterData("");
+
+    expect(
+      filteredUsers.every((user) => user.name != undefined && user.name != "")
+    ).toBe(true);
   });
 
-  it('should handle input strings with single characters', () => {
-    expect(compressString('a')).toBe('a');
-    expect(compressString('z')).toBe('z');
-    expect(compressString('c')).toBe('c');
+  test("should filter out objects with undefined or empty email", async () => {
+    const filteredUsers = await fetchAndFilterData("");
+
+    expect(
+      filteredUsers.every((user) => user.email != undefined && user.email != "")
+    ).toBe(true);
   });
 
-  it('should handle long input strings', () => {
-    // Generate a long string with consecutive repeated characters
-    const longString = 'a'.repeat(50000) + 'b'.repeat(50000) + 'c'.repeat(50000);
-    const compressedString = 'a50000b50000c50000';
-    expect(compressString(longString)).toBe(compressedString);
-  });
+  test("should include objects with all three fields", async () => {
+    const filteredUsers = await fetchAndFilterData("");
 
-  it('should handle an empty input string', () => {
-    expect(compressString('')).toBe('');
-  });
-
-  it('should handle a single-character input string', () => {
-    expect(compressString('a')).toBe('a');
-    expect(compressString('z')).toBe('z');
-  });
-
-  it('should handle an input string with all characters being the same', () => {
-    expect(compressString('aaaa')).toBe('a4');
-    expect(compressString('bbbbbb')).toBe('b6');
-    expect(compressString('ccccccccc')).toBe('c9');
-  });
-
-  it('should handle an input string with alternating characters', () => {
-    expect(compressString('ababab')).toBe('ababab');
-    expect(compressString('cdcddcddc')).toBe('cdcd2cd2c');
-  });
-
-  it('should handle an input string with only two characters', () => {
-    expect(compressString('aaabbb')).toBe('a3b3');
-    expect(compressString('xyyxxy')).toBe('xy2x2y');
+    expect(filteredUsers).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          id: expect.anything(),
+          name: expect.anything(),
+          email: expect.anything(),
+        }),
+      ])
+    );
   });
 });
